@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+
+    </script>
+    <style>
+    #TextOne{
+        font-family: 'Times New Roman'
+      }
+      
+    hr {
+    border: none; 
+    height: 2px; 
+    background-color: #000; 
+    margin: 20px 0; 
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    body{
+      background-color: rgb(253, 253, 253);
+    }
+    .botom{
+      float: right;
+    }
+    dd{
+      font-size: 13px;
+    }
+    #divtable {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9998;
+        display: none;
+      }
+    </style>
+</head>
+<body>
+  <div>
+    <div id="divtable">
+      <center><button type="button" class="btn btn-secondary" style="margin-top: 60%; font-size: 30px;" onclick="tablenum(1)">Стіл 1</button></center>
+      <center><button type="button" class="btn btn-secondary" style="margin-top: 10%; font-size: 30px;" onclick="tablenum(2)">Стіл 2</button></center>
+      <center><button type="button" class="btn btn-secondary" style="margin-top: 10%; font-size: 30px;" onclick="tablenum(3)">Стіл 3</button></center>
+    </div>
+  <div id="Foto-123" align="center" style="display: block;">
+    <div id="carouselExample" class="carousel slide" class="none">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="Фото кафе\FotoCafe1.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="Фото кафе\FotoCafe2.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="Фото кафе\FotoCafe3.png" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+  </div>
+  <div id="TextOne"><h1 style="margin-left: 30px; margin-top: 20px; line-height: 70%;">Сытый трутень</h1></div>
+  <div style="margin-left: 30px; font-size: 12px; line-height: 7px; color: rgb(118, 127, 137);">Кафе Сытый трутень, X=190 Z=-3440, Остров Create</div>
+  <hr>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton" onclick="functiontable()"><div><h3 style="display: inline-block; margin-left: 35%; margin-top: 1%;">Обрати стіл</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"></path></div>
+  </div></div>
+  <div style="text-align: center;">
+    <hr>
+    <h2 style="display: inline-block; padding: 0 20px;"><b>Меню</b></h2>
+  </div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="snidanku.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Сніданки</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="appetizer.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Закуски</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="Soups.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Супи</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="Main-dishes.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Основні блюда</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="Desserts.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Десерти</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+  <div style="border: 2px solid rgb(118, 127, 137); border-radius: 5%; margin: 20px; background-color: white;" class="Menubaton"><a href="Alcohol.html"><div><h3 style="display: inline-block; margin-left: 20px; margin-top: 1%;">Алкоголь</h3>
+    <div style=" display: inline-block; margin-top: 1%;" class="botom"><svg  width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2"></path></svg></div>
+  </div></a></div>
+    <hr>
+    <div style="margin: 20px;">
+      <dl style="line-height: 10px;">
+        <dt style="margin-bottom: 10px;">Робочий час</dt>
+        <dd>Понеділок - фіг знає коли, коли прийде продавець</dd>
+        <dd>Вівторок  - фіг знає коли, коли прийде продавець</dd>
+        <dd>Середа  - фіг знає коли, коли прийде продавець</dd>
+        <dd>Четвер  - фіг знає коли, коли прийде продавець</dd>
+        <dd>П'ятниця  - фіг знає коли, коли прийде продавець</dd>
+        <dd>Субота  - фіг знає коли, коли прийде продавець</dd>
+        <dd>Неділя  - фіг знає коли, коли прийде продавець</dd>
+      </dl>
+    </div>
+  </div>
+  <script>
+    function functiontable(){
+      document.getElementById('divtable').style.display = 'block'
+    }
+    function tablenum(x){
+      localStorage.setItem('tablenum', `${x}`);
+      document.getElementById('divtable').style.display = 'none'
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+    hr {
+    border: none; 
+    height: 2px; 
+    background-color: #000; 
+    margin: 5px 0; 
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    
+    body{
+      background-color: rgb(253, 253, 253);
+      margin: 0;
+    }
+    .dropdown{
+        float: right;
+    }
+    .InfoProduct{
+      float: inline-end;
+    }
+    #shopping {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9978;
+        display: none;
+      }
+    #shopping2{
+      position: fixed;
+      width: 80%;
+      height: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      background-color: rgb(130, 130, 130);
+      border-radius: 3%;
+      z-index: 9980;
+      display: none;
+    }
+    #allergens {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9998;
+        display: none;
+      }
+    #allergens2{
+      position: fixed;
+      width: 80%;
+      height: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      background-color: rgb(118, 127, 137);
+      border-radius: 3%;
+      z-index: 9999;
+      display: none;
+    }
+    .checkbox2{
+      color: white;
+      font-size: 17px;
+    }
+    .checkbox{
+      width: 19px;
+      height: 19px;
+    }
+    #totalprise {
+      position: fixed;
+      top: 200px;
+      right: 350px;
+    }
+    #totalprise2 {
+      position: absolute;
+      z-index: 1000;
+    }
+    #qrcode{
+      z-index: 1100; 
+      width: 100%; 
+      aspect-ratio: 1 / 1; 
+      border-radius: 3%; 
+      position: absolute; 
+      margin-top: 40%; 
+    }
+    #qrcode2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9998;
+        display: none;
+      }
+    canvas{
+      width: 98%; 
+      aspect-ratio: 1 / 1;
+      margin-left: 1%; 
+      margin-right: 1%;
+      z-index: 1105;
+      position: absolute;
+      display: block;
+    }
+    </style>
+</head>
+<body> 
+  <div id="qrcode2"><button type="button" class="btn" aria-label="Close" style="margin: 5px; background-color: rgba(0, 0, 0, 0);" onclick="Qr()"><img src="Фото\Хрест.png" alt="" style="width: 20px;"></button><center><div id="qrcode"></div></center></div>
+  <div id="shopping"><button type="button" class="btn btn-secondary"onclick="reset()" id="totalprise2">Оформити замовлення</button><div id="shopping2"><button type="button" class="btn-close" aria-label="Close" style="margin: 5px;" onclick="Basket2()"></button><h2 style="display: inline-block; color: white; display: flex; justify-content: center; align-items: center;">Кошик</h2><div id="shopping3" style="color: white; display: inline-block; margin-left: 5px; width: 100%;"></div> <p style="color: white; transform: translate(20px, 405px); position: fixed;" id="totalprise"></p></div></div>
+  <div id="allergens"><div id="allergens2"><button type="button" class="btn-close" aria-label="Close" style="margin: 5px;" onclick="Allergens2()"></button><h2 style="display: inline-block; color: white; display: flex; justify-content: center; align-items: center;">Алергени</h2>
+    <div style="margin: 20px;">
+      <input type="checkbox" id="NutsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Горіхи</label><br>
+      <input type="checkbox" id="DairyproductsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Молочні продукти</label><br>
+      <input type="checkbox" id="EggsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Яйця</label><br>
+      <input type="checkbox" id="FishCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Риба</label><br>
+      <input type="checkbox" id="ClamsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Молюски</label><br>
+      <input type="checkbox" id="GlutenCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Глютен</label><br>
+      <input type="checkbox" id="SoyproductsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Соєві продукти</label><br>
+      <input type="checkbox" id="CitrusfruitsCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Цитруси</label><br>
+      <input type="checkbox" id="ShellfishCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Ракоподібні</label><br>
+      <input type="checkbox" id="CeleryCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Селера</label><br>
+      <input type="checkbox" id="MustardCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Гірчиця</label><br>
+      <input type="checkbox" id="SesameCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Кунжут</label><br>
+      <input type="checkbox" id="TomatoesCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Помідори</label><br>
+      <input type="checkbox" id="PorkCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Свинина</label><br>
+      <input type="checkbox" id="LemonCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Лемон</label><br>
+      <input type="checkbox" id="CookiesCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Печиво</label><br>
+      <input type="checkbox" id="CornCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Кукурудза</label><br>
+      <input type="checkbox" id="PeachesCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Персики</label><br>
+      <input type="checkbox" id="SeafoodCheckbox" class="checkbox"><label for="myCheckbox" class="checkbox2">Морепродукти</label><br>
+    </div>
+    </div></div>
+  <div>
+    <a href="idex.html"><div style="display: inline-block; margin-top: 5px;">
+          <button type="button" class="btn btn-secondary dropdown" style="margin: 10px; margin-right: 5px; width: 45px;" onclick=""><img style="width: 25px; height: 30px; margin-right: 5px;" src="Фото\Arrow.png" alt=""></button>
+        </a></div>
+        <div style="display: inline-block;">
+          <button type="button" class="btn btn-secondary dropdown" style="margin: 10px; margin-left: 0px; height: 43px; " onclick="Allergens()">Алергії</button>
+        </div>
+      
+      <div class="dropdown" style="display: inline-block; margin: 10px; margin-top: 15px; margin-left: 5px;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: inline-block; height: 43px;">
+          Категорії
+        </button>
+        
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="snidanku.html">Сніданки</a></li>
+          <li><a class="dropdown-item" href="appetizer.html">Закуски</a></li>
+          <li><a class="dropdown-item" href="Soups.html">Супи</a></li>
+          <li><a class="dropdown-item" href="Main-dishes.html">Основні блюда</a></li>
+          <li><a class="dropdown-item" href="#">Десерти</a></li>
+          <li><a class="dropdown-item" href="Alcohol.html">Алкоголь</a></li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-secondary dropdown" style="margin-top: 15px; margin-right: 5px;" onclick="Basket()"><img style="width: 30px; height: 30px;" src="Фото\clipart-shopping2.png" alt=""></button>
+      <hr>
+      <div class="EggsCheckbox">
+    <div class="position-relative" style="display: inline-block;">
+        <img src="Фото їжі\Десерти\Йогурт.png" class="flex-shrink-0 me-3" alt="..." width="130px" height="130px">
+    </div>
+        <div style="display: inline-block; margin-right: 5%;" class="InfoProduct">
+          <h5 class="mt-2">Йогурт 3п. 1а.</h5>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Інгредієнти
+            </a>
+            <ul class="dropdown-menu">
+              <li>Молоко</li>
+              <li>Полуниця</li>
+            </ul> <br>
+            <button type="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="addObject('Йогурт 3п.', 1, 31)">Додати до замовлення</button>
+          </div>
+        </div>
+    <div style="width: 100%; height: 2px; background-color: rgb(200, 200, 200);"></div></div></div>
+  </div>
+    <div class="DairyproductsCheckbox">
+    <div class="EggsCheckbox">
+    <div class="position-relative" style="display: inline-block;">
+        <img src="Фото їжі\Десерти\Морозиво з ромом та родзинками.png" class="flex-shrink-0 me-3" alt="..." style="width: 110px; height: 110px; margin-bottom: 23px; margin-top: 10px;">
+    </div>
+        <div style="display: inline-block; margin-right: 5%;" class="InfoProduct">
+          <h5 class="mt-2" style="font-size: 16px;">Морозиво з ромом<br> та родзинками 3п. 1а.</h5>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Інгредієнти
+            </a>
+            <ul class="dropdown-menu">
+              <li>Молоко</li>
+              <li>Цукор</li>
+              <li>Родзинки</li>
+              <li>Яйце</li>
+              <li>Ром</li>
+            </ul> <br>
+            <button type="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="addObject('Морозиво з ромом та родзинками 3п.', 1, 32)">Додати до замовлення</button>
+          </div>
+        </div>
+    <div style="width: 100%; height: 2px; background-color: rgb(200, 200, 200);"></div></div></div>
+  </div>
+    <div class="GlutenCheckbox">
+    <div class="position-relative" style="display: inline-block;">
+        <img src="Фото їжі\Десерти\Шматок яблучного пирогу.png" class="flex-shrink-0 me-3" alt="..." width="130px" height="130px" style="margin-bottom: 21px;">
+    </div>
+        <div style="display: inline-block; margin-right: 5%;" class="InfoProduct">
+          <h5 class="mt-2">Шматок яблучного<br> пирогу 3п. 1а.</h5>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Інгредієнти
+            </a>
+            <ul class="dropdown-menu">
+              <li>Яблука</li>
+              <li>Цукор</li>
+              <li>Корж</li>
+            </ul> <br>
+            <button type="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="addObject('Шматок яблучного пирогу 3п.', 1, 33)">Додати до замовлення</button>
+          </div>
+        </div>
+    <div style="width: 100%; height: 2px; background-color: rgb(200, 200, 200);"></div></div></div>
+    <div class="DairyproductsCheckbox">
+    <div class="GlutenCheckbox">
+      <div class="position-relative" style="display: inline-block;">
+          <img src="Фото їжі\Десерти\Шматок ягідного чізкейку.png" class="flex-shrink-0 me-3" alt="..." width="130px" height="130px" style="margin-bottom: 21px;">
+      </div>
+          <div style="display: inline-block; margin-right: 5%;" class="InfoProduct">
+            <h5 class="mt-2">Шматок ягідного<br> чізкейку 3п. 1а.</h5>
+            <div class="dropdown">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Інгредієнти
+              </a>
+              <ul class="dropdown-menu">
+                <li>Ягоди</li>
+                <li>Молоко</li>
+                <li>Корж</li>
+              </ul> <br>
+              <button type="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="addObject('Шматок ягідного чізкейку 3п.', 1, 34)">Додати до замовлення</button>
+            </div>
+          </div>
+      <div style="width: 100%; height: 2px; background-color: rgb(200, 200, 200);"></div></div></div>
+      <div class="DairyproductsCheckbox">
+      <div class="GlutenCheckbox">
+        <div class="position-relative" style="display: inline-block;">
+            <img src="Фото їжі\Десерти\Пончик.png" class="flex-shrink-0 me-3" alt="..." width="130px" height="130px" style="margin-bottom: 5px;">
+        </div>
+            <div style="display: inline-block; margin-right: 5%;" class="InfoProduct">
+              <h5 class="mt-2">Пончик 4п. 1а.</h5>
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Інгредієнти
+                </a>
+                <ul class="dropdown-menu">
+                  <li>Борошно</li>
+                  <li>Молоко</li>
+                  <li>Цукор</li>
+                </ul> <br>
+                <button type="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="addObject('Шматок яблучного пирогу 4п.', 1, 35)">Додати до замовлення</button>
+              </div>
+            </div>
+        <div style="width: 100%; height: 2px; background-color: rgb(200, 200, 200);"></div></div></div>
+  </div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+      function Basket() {
+        document.getElementById("shopping").style.display = "block";
+        document.getElementById("shopping2").style.display = "block";
+      }
+      function Basket2() {
+        document.getElementById("shopping").style.display = "none";
+        document.getElementById("shopping2").style.display = "none";
+      }
+      function Allergens() {
+        document.getElementById("allergens").style.display = "block";
+        document.getElementById("allergens2").style.display = "block";
+      }
+      function Allergens2() {
+        document.getElementById("allergens").style.display = "none";
+        document.getElementById("allergens2").style.display = "none";
+      }
+
+      let checkboxes = document.querySelectorAll('.checkbox');
+
+
+      checkboxes.forEach(function(checkbox) {
+
+        checkbox.addEventListener('change', function() {
+          localStorage.setItem(checkbox.id, checkbox.checked);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+          let savedState = localStorage.getItem(checkbox.id);
+
+          if (savedState !== null) {
+            checkbox.checked = savedState === 'true';
+          }
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        checkboxes.forEach(function(checkbox) {
+          checkbox.addEventListener('change', function() {
+            localStorage.setItem(checkbox.id, checkbox.checked);
+              updateDisplay();
+            });
+        
+            let savedState = localStorage.getItem(checkbox.id);
+            if (savedState !== null) {
+              checkbox.checked = savedState === 'true';
+            }
+        });
+    
+          updateDisplay();
+      });
+
+      function updateDisplay() {
+        checkboxes.forEach(function(checkbox) {
+          let elements = document.getElementsByClassName(checkbox.id);
+          for (let i = 0; i < elements.length; i++) {
+            if (checkbox.checked) {
+                elements[i].style.display = 'none';
+            } else {
+                elements[i].style.display = '';
+            }
+          }
+        });
+      }
+      let i2 = localStorage.getItem('i') ? parseInt(localStorage.getItem('i')) : 0;
+      let shoppingList = document.getElementById('shopping3');
+      let shoppingList2 = document.getElementById('shopping4');
+      let allergens2 = document.getElementById('allergens2');
+      let totalprise2 = document.getElementById('totalprise2');
+      let Basketobjects = localStorage.getItem("Basketobjects") ? JSON.parse(localStorage.getItem("Basketobjects")) : [];
+      let windowWidth = window.innerWidth;
+
+
+      function handleResize() {
+        let windowHeight = window.innerHeight;
+        if (windowHeight < 700) {
+            totalprise2.style.transform = 'translate(45%, 1600%)';
+        } else if (windowHeight < 850) {
+            totalprise2.style.transform = 'translate(55%, 1900%)';
+        } else {
+            totalprise2.style.transform = 'translate(55%, 2200%)';
+        }
+      }
+      setInterval(handleResize, 500)
+
+      function displayObjects() {
+            shoppingList.innerHTML = "";
+            
+            Basketobjects.forEach(function(object) {
+                let Basketobjects = document.createElement("div");
+                Basketobjects.textContent = JSON.stringify(object.name);
+
+                let deleteButton = document.createElement("button");
+                deleteButton.style.border = '0px'
+                deleteButton.style.color = 'red'
+                deleteButton.style.backgroundColor = 'rgb(130, 130, 130)'
+                deleteButton.style.float = 'inline-end'
+                deleteButton.style.marginRight = '5%'
+                deleteButton.style.fontSize = '13px'
+                deleteButton.textContent = "Видалити";
+                deleteButton.addEventListener("click", function() {
+                    removeObject(object);
+                });
+                
+                Basketobjects.appendChild(deleteButton);
+                shoppingList.appendChild(Basketobjects);
+            });
+        }
+
+        function addObject(x, y, z) {
+    if (i2 < 19) {
+        i2++;
+        let newObject = { name: `${x}`, num: i2, prise: `${y}`, id: `${z}` };
+        Basketobjects.push(newObject);
+        localStorage.setItem("Basketobjects", JSON.stringify(Basketobjects));
+        localStorage.setItem('i', i2);
+        displayObjects();
+    } else {
+        alert('Вибачте, але в одному замовленні не може бути більше 19 позицій');
+    }
+}
+
+        function removeObject(object) {
+            i2 -= 1
+            let index = Basketobjects.indexOf(object);
+            if (index > -1) {
+              Basketobjects.splice(index, 1);
+                localStorage.setItem("Basketobjects", JSON.stringify(Basketobjects));
+                displayObjects();
+            }
+        }
+        
+
+        function generateQR() {
+          let itemIds = Basketobjects.map(item => item.id);
+          let inputValue = JSON.stringify(itemIds) + '-T' + localStorage.getItem('tablenum');
+          if (!inputValue) {
+          alert('Вибачте, але ви не замовили жодної страви!');
+          return;
+          }
+            let qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: inputValue,
+            width: 360,
+            height: 360
+            });
+            document.getElementById("qrcode2").style.display = "block";
+            qrcode.makeCode(inputValue);
+            Basket2()
+          }
+      function Qr() {
+        document.getElementById("qrcode2").style.display = "none";
+        document.getElementById("qrcode").innerHTML = ' ';
+      }
+      function reset() {
+        generateQR()
+            localStorage.removeItem('Basketobjects');
+            shoppingList.innerHTML = "";
+            Basketobjects = [];
+            
+            i2 = 0;
+            localStorage.setItem('i', i2);
+            
+        }
+        displayObjects();
+    </script>  
+</body>
+</html>
